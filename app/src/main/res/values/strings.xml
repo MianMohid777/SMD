@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Quiz_App</string>
+    <string name="btn1">Click Me !!</string>
+    <string name="logo">logo</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="place_holder">John Doe…</string>
+    <string name="startBtn">Start</string>
+    <string name="prev">Previous</string>
+    <string name="next">Next</string>
+</resources>
