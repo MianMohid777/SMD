@@ -55,21 +55,22 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(saveInstances);
         setContentView(R.layout.quiz_activity);
 
-        String username = getIntent().getStringExtra("username");
+        String username = getIntent().getStringExtra("username"); // Getting the Username Data from previous Intent
 
-        init();
-        createQuiz();
+        init(); // Initialization
+        createQuiz(); // Quiz Creation
 
         Set<Integer> keys = questionMap.keySet();
 
-        display();
+        display(); // Displaying the Quiz Dynamically
 
+        // Event Listener
         nextButton.setOnClickListener(v -> {
 
             int selectedId = options.getCheckedRadioButtonId();
 
             if (selectedId != -1) {
-                String radioId = getResources().getResourceEntryName(selectedId);
+                String radioId = getResources().getResourceEntryName(selectedId); // Getting the Option Selected via Radio Button Id
 
                 switch (radioId) {
                     case "r1":
@@ -92,6 +93,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 if (this.itr+1 < keys.size()) {
 
+                    // Activating the Previous Button
                     if (!prevButton.isActivated()) {
                         prevButton.setVisibility(TextView.VISIBLE);
                         handlePrevious();
@@ -101,12 +103,12 @@ public class QuizActivity extends AppCompatActivity {
                     display();
 
                 } else {
-                    Toast.makeText(this, " End ", Toast.LENGTH_SHORT).show();
-
+                    // Onto the Next Activity
                     Intent i = new Intent(QuizActivity.this, ResultActivity.class);
                     i.putExtra("username", username);
                     i.putExtra("score", computeResult());
                     startActivity(i);
+                    finish();
                 }
 
             } else {
@@ -156,10 +158,11 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     void handlePrevious() {
+        // Event Listener for Previous Button
         prevButton.setOnClickListener(v -> {
             itr--;
             if (this.itr == 0)
-            prevButton.setVisibility(TextView.INVISIBLE);
+                prevButton.setVisibility(TextView.INVISIBLE);
 
             display();
             nextButton.setText("Next");

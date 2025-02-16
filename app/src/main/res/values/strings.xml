@@ -7,4 +7,7 @@
     <string name="startBtn">Start</string>
     <string name="prev">Previous</string>
     <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="share">Share your score</string>
 </resources>

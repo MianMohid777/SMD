@@ -2,7 +2,13 @@ package com.example.quiz_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,20 +33,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        init();
+        ImageView logo = findViewById(R.id.logo);
 
-        button.setOnClickListener((v) -> {
+        // Load animations
+        Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
 
-            Toast.makeText(MainActivity.this, "Button Clicked !!!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            startActivity(intent);
+        // Combine animations
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(scaleUp);
+        animationSet.addAnimation(fadeIn);
+        animationSet.setInterpolator(new BounceInterpolator());
 
-        });
-    }
+        // Start animation
+        logo.startAnimation(animationSet);
 
-
-    private void init()
-    {
-        button = findViewById(R.id.btn);
+        // Navigate after delay
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            finish();
+        }, 3000); // 3 seconds
     }
 }
