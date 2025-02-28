@@ -10,4 +10,5 @@
     <string name="finish">Finish</string>
     <string name="scoreboard">Scoreboard</string>
     <string name="share">Share your score</string>
+    <string name="back">back</string>
 </resources>

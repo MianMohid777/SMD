@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -33,20 +34,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         ImageView logo = findViewById(R.id.logo);
+        CardView logoCard = findViewById(R.id.logoCard);
 
         // Load animations
         Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        Animation rotate = AnimationUtils.loadAnimation(this,R.anim.rotate);
 
         // Combine animations
-        AnimationSet animationSet = new AnimationSet(true);
+        AnimationSet animationSet = new AnimationSet(false);
         animationSet.addAnimation(scaleUp);
         animationSet.addAnimation(fadeIn);
-        animationSet.setInterpolator(new BounceInterpolator());
+        animationSet.addAnimation(rotate);
 
         // Start animation
-        logo.startAnimation(animationSet);
+        logo.startAnimation(fadeIn);
+        logoCard.startAnimation(animationSet);
+
 
         // Navigate after delay
         new Handler().postDelayed(() -> {
