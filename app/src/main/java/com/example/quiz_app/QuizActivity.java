@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -84,13 +83,13 @@ public class QuizActivity extends AppCompatActivity {
                         addAnswer(1);
                         break;
                     case "r2":
-                       addAnswer(2);
+                        addAnswer(2);
                         break;
                     case "r3":
-                       addAnswer(3);
+                        addAnswer(3);
                         break;
                     case "r4":
-                       addAnswer(4);
+                        addAnswer(4);
                         break;
                     default:
                         Toast.makeText(this, "Error in Selection", Toast.LENGTH_SHORT).show();
@@ -98,7 +97,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 }
 
-                if (this.itr+1 < keys.size()) {
+                if (this.itr + 1 < keys.size()) {
 
                     // Activating the Previous Button
                     if (!prevButton.isActivated()) {
@@ -109,7 +108,7 @@ public class QuizActivity extends AppCompatActivity {
 
                     display();
 
-                    if(answers.size() == itr)
+                    if (answers.size() == itr)
                         options.clearCheck();
                     else
                         setStoredAnswers();
@@ -129,8 +128,6 @@ public class QuizActivity extends AppCompatActivity {
             }
 
         });
-
-
 
     }
 
@@ -196,30 +193,29 @@ public class QuizActivity extends AppCompatActivity {
             option4.setText(nextQuest.getOption4());
 
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(this.itr + 1).append( "/" ).append(keys.size());
+            stringBuilder.append(this.itr + 1).append("/").append(keys.size());
 
             counter.setText(stringBuilder.toString());
 
-            if (itr + 1 == keys.size())
-                {nextButton.setText("Finish");}
+            if (itr + 1 == keys.size()) {
+                nextButton.setText("Finish");
+            }
 
         }
     }
 
-    int computeResult()
-    {
+    int computeResult() {
         int score = 0;
-        for( int i = 0; i< solutionKey.size(); i++)
-            if(Objects.equals(solutionKey.get(i), answers.get(i)))
+        for (int i = 0; i < solutionKey.size(); i++)
+            if (Objects.equals(solutionKey.get(i), answers.get(i)))
                 score++;
         return score;
     }
 
-    void setStoredAnswers()
-    {
+    void setStoredAnswers() {
         int id = -1;
 
-        switch(answers.get(itr)){
+        switch (answers.get(itr)) {
 
             case 1:
                 id = R.id.r1;
@@ -228,10 +224,12 @@ public class QuizActivity extends AppCompatActivity {
                 id = R.id.r2;
                 break;
             case 3:
-                id = R.id.r3;;
+                id = R.id.r3;
+                ;
                 break;
             case 4:
-                id = R.id.r4;;
+                id = R.id.r4;
+                ;
                 break;
             default:
                 Toast.makeText(this, "Error in retrieving the Integer Id", Toast.LENGTH_SHORT).show();
@@ -240,12 +238,12 @@ public class QuizActivity extends AppCompatActivity {
         options.check(id); // Checked the Radio Button Saved Before
     }
 
-    void addAnswer(int val){
+    void addAnswer(int val) {
 
-        if(answers.size() > itr)
-         answers.set(itr, val);
+        if (answers.size() > itr)
+            answers.set(itr, val);
         else
-            answers.add(itr,val);
+            answers.add(itr, val);
     }
 }
 

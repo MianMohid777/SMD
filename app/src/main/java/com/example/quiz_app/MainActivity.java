@@ -6,10 +6,8 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // Start animation
         logo.startAnimation(fadeIn);
         logoCard.startAnimation(animationSet);
-
 
         // Navigate after delay
         new Handler().postDelayed(() -> {
